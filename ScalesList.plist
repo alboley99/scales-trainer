@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>scalegroup</key>
+		<string>Grade 6</string>
+		<key>scales</key>
+		<array>
+			<string>Scale F Major - 2 Octaves</string>
+			<string>Scale F Minor Harmonic - 2 Octaves</string>
+			<string>Scale F Minor Melodic - 2 Octaves</string>
+			<string>Scale D Major - 3 Octaves</string>
+			<string>Scale D Minor Harmonic - 3 Octaves</string>
+			<string>Scale D Minor Melodic - 3 Octaves</string>
+			<string>Scale C Major - 3 Octaves</string>
+			<string>Scale C Minor Harmonic - 3 Octaves</string>
+			<string>Scale C Minor Melodic - 3 Octaves</string>
+			<string>Scale B Major - 2 Octaves</string>
+			<string>Scale B Minor Harmonic - 2 Octaves</string>
+			<string>Scale B Minor Melodic - 2 Octaves</string>
+			<string>Arpeggio F Major - 2 Octaves</string>
+			<string>Dominant 7th Key of G - 2 Octaves</string>
+			<string>Dominant 7th Key of B♭ - 2 Octaves</string>
+			<string>Diminished 7th Starting on C - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Major Scales</string>
+		<key>scales</key>
+		<array>
+			<string>Scale F Major - 2 Octaves</string>
+			<string>Scale D Major - 3 Octaves</string>
+			<string>Scale C Major - 3 Octaves</string>
+			<string>Scale B Major - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Minor Harmonic Scales</string>
+		<key>scales</key>
+		<array>
+			<string>Scale F Minor Harmonic - 2 Octaves</string>
+			<string>Scale D Minor Harmonic - 3 Octaves</string>
+			<string>Scale C Minor Harmonic - 3 Octaves</string>
+			<string>Scale B Minor Harmonic - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Minor Melodic Scales</string>
+		<key>scales</key>
+		<array>
+			<string>Scale F Minor Melodic - 2 Octaves</string>
+			<string>Scale D Minor Melodic - 3 Octaves</string>
+			<string>Scale C Minor Melodic - 3 Octaves</string>
+			<string>Scale B Minor Melodic - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Arpeggios</string>
+		<key>scales</key>
+		<array>
+			<string>Arpeggio F Major - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Dominant Sevenths</string>
+		<key>scales</key>
+		<array>
+			<string>Dominant 7th Key of G - 2 Octaves</string>
+			<string>Dominant 7th Key of B♭ - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Diminished Sevenths</string>
+		<key>scales</key>
+		<array>
+			<string>Diminished 7th Starting on C - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
+		<string>Viola Scales</string>
+		<key>scales</key>
+		<array>
+			<string>Viola - Scale C Major - 2 Octaves</string>
+		</array>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>32000</string>
+	<string>cello_D2_1_forte_arco-normal.mp3</string>
+	<string>26</string>
+	<string>26</string>
+	<string>cello_Fs2_1_forte_arco-normal.mp3</string>
+	<string>30</string>
+	<string>30</string>
+	<string>cello_As2_1_forte_arco-normal.mp3</string>
+	<string>34</string>
+	<string>34</string>
+	<string>cello_D3_1_forte_arco-normal.mp3</string>
+	<string>38</string>
+	<string>38</string>
+	<string>cello_Fs3_1_forte_arco-normal.mp3</string>
+	<string>42</string>
+	<string>42</string>
+	<string>cello_As3_1_forte_arco-normal.mp3</string>
+	<string>46</string>
+	<string>46</string>
+	<string>cello_D4_1_forte_arco-normal.mp3</string>
+	<string>50</string>
+	<string>50</string>
+	<string>cello_Fs4_1_forte_arco-normal.mp3</string>
+	<string>54</string>
+	<string>54</string>
+	<string>cello_As4_1_forte_arco-normal.mp3</string>
+	<string>58</string>
+	<string>58</string>
+	<string>cello_D5_1_forte_arco-normal.mp3</string>
+	<string>62</string>
+	<string>62</string>
+	<string>cello_Fs5_1_forte_arco-normal.mp3</string>
+	<string>66</string>
+	<string>66</string>
+	<string>cello_As5_1_forte_arco-normal.mp3</string>
+	<string>70</string>
+	<string>70</string>
+	<string>P200 Piano D6.caf</string>
+	<string>74</string>
+	<string>74</string>
+	<string>P200 Piano F#6.caf</string>
+	<string>78</string>
+	<string>78</string>
+	<string>P200 Piano C7.caf</string>
+	<string>84</string>
+	<string>84</string>
+	<string>P200 Piano F#7.caf</string>
+	<string>90</string>
+	<string>90</string>
+	<string>P200 Piano A#7.caf</string>
+	<string>94</string>
+	<string>94</string>
+	<string>P200 Piano D#8.caf</string>
+	<string>99</string>
+	<string>99</string>
+	<string>P200 Piano G#9.caf</string>
+	<string>104</string>
+	<string>104</string>
+	<string>P200 Piano C10.caf</string>
+	<string>108</string>
+	<string>108</string>
+</array>
+</plist>
