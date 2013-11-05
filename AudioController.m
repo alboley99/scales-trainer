@@ -147,9 +147,9 @@ static OSStatus recordingCallback(void *inRefCon,
                              &(THIS->bufferList));
     checkStatus(status);
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+ //AJH   dispatch_async(dispatch_get_main_queue(), ^{
         [THIS.delegate  receivedAudioSamples:(SInt16*)THIS->bufferList.mBuffers[0].mData length:inNumberFrames];
-    }); 
+//AJH    });
     
     return noErr;
 }

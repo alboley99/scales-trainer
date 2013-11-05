@@ -1192,7 +1192,7 @@ CFTimeInterval _arpeggioDelay;
 
 - (void) receivedAudioSamples:(SInt16 *)samples length:(int)len {
     [autoCorrelator addSamples:samples inNumberFrames:len];
-//   free(samples);
+   free(samples);
 }
 
 - (void)playArpeggioWithNotes:(NSArray *)arpNotes delay:(CFTimeInterval)delay

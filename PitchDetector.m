@@ -151,9 +151,10 @@
     
     freq =self.sampleRate/interp(result[returnIndex-1], result[returnIndex], result[returnIndex+1], returnIndex);
     if(freq >= 27.5 && freq <= 4500.0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
+ //AJH       dispatch_async(dispatch_get_main_queue(), ^{
             [delegate updatedPitch:freq];
-        }); 
+ //AJH      });
     }
     self.running = NO;
 }

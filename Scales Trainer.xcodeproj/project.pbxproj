@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84574C0D1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */; };
 		84FB49B61827997500201563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B51827997500201563 /* Foundation.framework */; };
 		84FB49B81827997500201563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B71827997500201563 /* CoreGraphics.framework */; };
 		84FB49BA1827997500201563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B91827997500201563 /* UIKit.framework */; };
@@ -114,6 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dominant 7th Key of E - 2 Octaves.plist"; sourceTree = "<group>"; };
 		84FB49B21827997500201563 /* Scales Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scales Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FB49B51827997500201563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84FB49B71827997500201563 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -212,7 +214,6 @@
 		84FB4A3B182799CD00201563 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		84FB4A3C182799CD00201563 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84FB4A3E182799CD00201563 /* PitchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PitchDetector.h; sourceTree = "<group>"; };
-		84FB4A3F182799CD00201563 /* Scales Trainer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scales Trainer-Prefix.pch"; sourceTree = "<group>"; };
 		84FB4A40182799CD00201563 /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
 		84FB4A41182799CD00201563 /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
 		84FB4A9218279BA400201563 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -251,30 +252,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84FB49A91827997500201563 = {
+		84574C0B1828557F00BD2521 /* Scales plists */ = {
 			isa = PBXGroup;
 			children = (
-				84FB4A38182799CD00201563 /* AppDelegate.h */,
-				84FB4A3C182799CD00201563 /* AppDelegate.m */,
-				84FB49FC182799CC00201563 /* AudioController.h */,
-				84FB4A3E182799CD00201563 /* PitchDetector.h */,
-				84FB49E4182799CC00201563 /* PitchDetector.m */,
-				84FB49E6182799CC00201563 /* AudioController.m */,
-				84FB49E5182799CC00201563 /* MainStoryboard.storyboard */,
-				84FB49EA182799CC00201563 /* ViewController.h */,
-				84FB49E7182799CC00201563 /* ViewController.m */,
-				84FB49FF182799CD00201563 /* ScaleSelectorViewController.h */,
-				84FB49FE182799CD00201563 /* ScaleSelectorViewController.m */,
-				84FB49E9182799CC00201563 /* Scales Trainer.xcworkspace */,
-				84FB49EB182799CC00201563 /* Scale B Major - 2 Octaves.plist */,
-				84FB49EC182799CC00201563 /* Images */,
 				84FB49FD182799CC00201563 /* ScalesList.plist */,
-				84FB4A00182799CD00201563 /* Scale D Minor Melodic - 3 Octaves.plist */,
-				84FB4A01182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist */,
-				84FB4A02182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist */,
-				84FB4A03182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist */,
-				84FB4A04182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist */,
-				84FB4A05182799CD00201563 /* SoundBankPlayer */,
+				84FB49EB182799CC00201563 /* Scale B Major - 2 Octaves.plist */,
 				84FB4A2D182799CD00201563 /* Scale D Minor Harmonic - 3 Octaves.plist */,
 				84FB4A2E182799CD00201563 /* Scale C Minor Harmonic - 3 Octaves.plist */,
 				84FB4A2F182799CD00201563 /* Scale C Minor Melodic - 3 Octaves.plist */,
@@ -286,11 +268,38 @@
 				84FB4A35182799CD00201563 /* Scale F Major - 2 Octaves.plist */,
 				84FB4A36182799CD00201563 /* Scale D Major - 3 Octaves.plist */,
 				84FB4A37182799CD00201563 /* Scale C Major - 3 Octaves.plist */,
+				84FB4A00182799CD00201563 /* Scale D Minor Melodic - 3 Octaves.plist */,
+				84FB4A01182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist */,
+				84FB4A02182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist */,
+				84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */,
+				84FB4A03182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist */,
+				84FB4A04182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist */,
+			);
+			name = "Scales plists";
+			sourceTree = "<group>";
+		};
+		84FB49A91827997500201563 = {
+			isa = PBXGroup;
+			children = (
+				84FB4A38182799CD00201563 /* AppDelegate.h */,
+				84FB4A3C182799CD00201563 /* AppDelegate.m */,
+				84FB49EA182799CC00201563 /* ViewController.h */,
+				84FB49E7182799CC00201563 /* ViewController.m */,
+				84FB49FC182799CC00201563 /* AudioController.h */,
+				84FB49FF182799CD00201563 /* ScaleSelectorViewController.h */,
+				84FB49FE182799CD00201563 /* ScaleSelectorViewController.m */,
+				84FB4A3E182799CD00201563 /* PitchDetector.h */,
+				84FB49E4182799CC00201563 /* PitchDetector.m */,
+				84FB49E6182799CC00201563 /* AudioController.m */,
+				84FB49E5182799CC00201563 /* MainStoryboard.storyboard */,
+				84FB49E9182799CC00201563 /* Scales Trainer.xcworkspace */,
+				84FB49BB1827997500201563 /* Scales Trainer */,
+				84574C0B1828557F00BD2521 /* Scales plists */,
+				84FB49EC182799CC00201563 /* Images */,
+				84FB4A05182799CD00201563 /* SoundBankPlayer */,
 				84FB4A39182799CD00201563 /* en.lproj */,
-				84FB4A3F182799CD00201563 /* Scales Trainer-Prefix.pch */,
 				84FB4A40182799CD00201563 /* TPCircularBuffer.h */,
 				84FB4A41182799CD00201563 /* TPCircularBuffer.c */,
-				84FB49BB1827997500201563 /* Scales Trainer */,
 				84FB49D41827997500201563 /* Scales TrainerTests */,
 				84FB49B41827997500201563 /* Frameworks */,
 				84FB49B31827997500201563 /* Products */,
@@ -554,6 +563,7 @@
 				84FB4A5C182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist in Resources */,
 				84FB4A51182799CD00201563 /* Cello.jpg in Resources */,
 				84FB4A52182799CD00201563 /* Cello.png in Resources */,
+				84574C0D1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist in Resources */,
 				84FB4A85182799CD00201563 /* Scale C Minor Melodic - 3 Octaves.plist in Resources */,
 				84FB4A5B182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist in Resources */,
 				84FB4A75182799CD00201563 /* P200 Piano D2.caf in Resources */,
@@ -748,6 +758,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Scales Trainer/Scales Trainer-Prefix.pch";
 				INFOPLIST_FILE = "Scales Trainer/Scales Trainer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -761,6 +772,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Scales Trainer/Scales Trainer-Prefix.pch";
 				INFOPLIST_FILE = "Scales Trainer/Scales Trainer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -827,6 +839,7 @@
 				84FB49E01827997500201563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84FB49E11827997500201563 /* Build configuration list for PBXNativeTarget "Scales TrainerTests" */ = {
 			isa = XCConfigurationList;
@@ -835,6 +848,7 @@
 				84FB49E31827997500201563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
