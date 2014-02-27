@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84574C0D1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */; };
+		847241A718BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */; };
 		84FB49B61827997500201563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B51827997500201563 /* Foundation.framework */; };
 		84FB49B81827997500201563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B71827997500201563 /* CoreGraphics.framework */; };
 		84FB49BA1827997500201563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B91827997500201563 /* UIKit.framework */; };
@@ -46,7 +47,7 @@
 		84FB4A5B182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A01182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist */; };
 		84FB4A5C182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A02182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist */; };
 		84FB4A5D182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A03182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist */; };
-		84FB4A5E182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A04182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist */; };
+		84FB4A5E182799CD00201563 /* Double Bass - Scale G Major - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A04182799CD00201563 /* Double Bass - Scale G Major - 2 Octaves.plist */; };
 		84FB4A5F182799CD00201563 /* OpenALSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = 84FB4A06182799CD00201563 /* OpenALSupport.c */; };
 		84FB4A60182799CD00201563 /* SoundBankPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FB4A09182799CD00201563 /* SoundBankPlayer.m */; };
 		84FB4A61182799CD00201563 /* cello_As2_1_forte_arco-normal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84FB4A0B182799CD00201563 /* cello_As2_1_forte_arco-normal.mp3 */; };
@@ -116,6 +117,7 @@
 
 /* Begin PBXFileReference section */
 		84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dominant 7th Key of E - 2 Octaves.plist"; sourceTree = "<group>"; };
+		847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Viola - Scale C Major - 2 Octaves.plist"; sourceTree = "<group>"; };
 		84FB49B21827997500201563 /* Scales Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scales Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FB49B51827997500201563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84FB49B71827997500201563 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -160,7 +162,7 @@
 		84FB4A01182799CD00201563 /* Dominant 7th Key of G - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dominant 7th Key of G - 2 Octaves.plist"; sourceTree = "<group>"; };
 		84FB4A02182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dominant 7th Key of B♭ - 2 Octaves.plist"; sourceTree = "<group>"; };
 		84FB4A03182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Diminished 7th Starting on C - 2 Octaves.plist"; sourceTree = "<group>"; };
-		84FB4A04182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Viola - Scale C Major - 2 Octaves.plist"; sourceTree = "<group>"; };
+		84FB4A04182799CD00201563 /* Double Bass - Scale G Major - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Double Bass - Scale G Major - 2 Octaves.plist"; sourceTree = "<group>"; };
 		84FB4A06182799CD00201563 /* OpenALSupport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OpenALSupport.c; sourceTree = "<group>"; };
 		84FB4A07182799CD00201563 /* OpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenALSupport.h; sourceTree = "<group>"; };
 		84FB4A08182799CD00201563 /* SoundBankPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundBankPlayer.h; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		84574C0B1828557F00BD2521 /* Scales plists */ = {
 			isa = PBXGroup;
 			children = (
+				847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */,
 				84FB49FD182799CC00201563 /* ScalesList.plist */,
 				84FB49EB182799CC00201563 /* Scale B Major - 2 Octaves.plist */,
 				84FB4A2D182799CD00201563 /* Scale D Minor Harmonic - 3 Octaves.plist */,
@@ -273,7 +276,7 @@
 				84FB4A02182799CD00201563 /* Dominant 7th Key of B♭ - 2 Octaves.plist */,
 				84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */,
 				84FB4A03182799CD00201563 /* Diminished 7th Starting on C - 2 Octaves.plist */,
-				84FB4A04182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist */,
+				84FB4A04182799CD00201563 /* Double Bass - Scale G Major - 2 Octaves.plist */,
 			);
 			name = "Scales plists";
 			sourceTree = "<group>";
@@ -286,11 +289,11 @@
 				84FB49EA182799CC00201563 /* ViewController.h */,
 				84FB49E7182799CC00201563 /* ViewController.m */,
 				84FB49FC182799CC00201563 /* AudioController.h */,
+				84FB49E6182799CC00201563 /* AudioController.m */,
 				84FB49FF182799CD00201563 /* ScaleSelectorViewController.h */,
 				84FB49FE182799CD00201563 /* ScaleSelectorViewController.m */,
 				84FB4A3E182799CD00201563 /* PitchDetector.h */,
 				84FB49E4182799CC00201563 /* PitchDetector.m */,
-				84FB49E6182799CC00201563 /* AudioController.m */,
 				84FB49E5182799CC00201563 /* MainStoryboard.storyboard */,
 				84FB49E9182799CC00201563 /* Scales Trainer.xcworkspace */,
 				84FB49BB1827997500201563 /* Scales Trainer */,
@@ -593,9 +596,10 @@
 				84FB4A8C182799CD00201563 /* Scale D Major - 3 Octaves.plist in Resources */,
 				84FB4A71182799CD00201563 /* P200 Piano A#7.caf in Resources */,
 				84FB4A6E182799CD00201563 /* P200 Piano A#3.caf in Resources */,
+				847241A718BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist in Resources */,
 				84FB4A82182799CD00201563 /* Piano.plist in Resources */,
 				84FB4A64182799CD00201563 /* cello_As5_1_forte_arco-normal.mp3 in Resources */,
-				84FB4A5E182799CD00201563 /* Viola - Scale C Major - 2 Octaves.plist in Resources */,
+				84FB4A5E182799CD00201563 /* Double Bass - Scale G Major - 2 Octaves.plist in Resources */,
 				84FB4A87182799CD00201563 /* Scale B Minor Harmonic - 2 Octaves.plist in Resources */,
 				84FB4A4E182799CD00201563 /* cello 1C.png in Resources */,
 				84FB4A4D182799CD00201563 /* cello 1B.png in Resources */,

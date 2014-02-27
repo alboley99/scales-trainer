@@ -48,7 +48,7 @@ CFTimeInterval _arpeggioDelay;
     
     int string;
     int position;
-    int positionIndex;
+//    int positionIndex;
     int note;
     NSString *direction;
     NSMutableArray *scaleAllNotes;
@@ -74,7 +74,7 @@ CFTimeInterval _arpeggioDelay;
         
         // Calculate relative position
         
-        positionIndex = position + ((string - 1) * (numberOfPositions-1));
+//AN        positionIndex = position + ((string - 1) * (numberOfPositions-1));
         
         // Calculate the note corresponding to the string and position
         
@@ -82,10 +82,15 @@ CFTimeInterval _arpeggioDelay;
         {
             note = 29 + position + ((string)*7);
         }
-        else
+        else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
         {
             
-            note = 17 + position + ((string)*7);
+            note = -1 + position + ((string)*5);
+        }
+            else   // cello
+        {
+                
+                note = 17 + position + ((string)*7);
         }
     
         // Add the number to an Array - this enables the correct position to be lit up
@@ -116,7 +121,7 @@ CFTimeInterval _arpeggioDelay;
                 
                 // Calculate relative position
                 
-                positionIndex = position + ((string - 1) * (numberOfPositions-1));
+  //AN              positionIndex = position + ((string - 1) * (numberOfPositions-1));
                 
                 // Calculate the note corresponding to the string and position
                 
@@ -124,7 +129,12 @@ CFTimeInterval _arpeggioDelay;
                 {
                     note = 29 + position + ((string)*7);
                 }
-                else
+                else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
+                {
+                    
+                    note = -1 + position + ((string)*5);
+                }
+                else // cello
                 {
                     
                     note = 17 + position + ((string)*7);
@@ -154,7 +164,7 @@ CFTimeInterval _arpeggioDelay;
     _playingArpeggio = NO;
     
     // Turn the last lit up finger red
-    [self lightFinger:lastNoteIndex forColour:1];
+    [self lightFinger:lastNoteIndex forColour:1 inPitchAccuracy:0];
     
     if (pitchDetectionStarted == true) {
         [stopStartPitchSwitch setOn:YES animated:YES];
@@ -175,7 +185,7 @@ CFTimeInterval _arpeggioDelay;
 }
 
 
-- (BOOL) lightFinger:(int)noteIndex forColour:(int)colour
+- (BOOL) lightFinger:(int)noteIndex forColour:(int)colour inPitchAccuracy:(int)pitchAccuracy
 {
   
     int currentNote;
@@ -204,12 +214,7 @@ CFTimeInterval _arpeggioDelay;
             
     }
     
-    
-    
-    
     // Find out of the note is present in the current scale by looking up in the array
-    
-
     
     for (int i=0; i<[scaleNotes count]; i++)
     {
@@ -236,11 +241,57 @@ CFTimeInterval _arpeggioDelay;
             
             positionImage = [noteImages objectAtIndex:positionIndex];
             positionImage.image = image;
+            
+            // Now get the coordinates on the screen
+            
+            CGPoint pos = positionImage.center;
+            
+            // Place a sharp or flat image above or below
+            
+            CGRect Rect;
+            UIImageView *newImage;
+            
+         // Creates an indicator next to the finger position to indicate whether note is flat or sharp
+            
+            // Remove previous pitch indicator
+            
+            for (UIView *subview in [self.view subviews]) {
+                if (subview.tag == 1) {
+                    [subview removeFromSuperview];
+                }
+            }
+            
+            switch (pitchAccuracy)
+            {
+                case 1: // Sharp
+                    Rect = CGRectMake(pos.x-15, pos.y-0, 30, 30);
+                    newImage = [[UIImageView alloc] initWithFrame:Rect];
+                    newImage.image = [UIImage imageNamed:@"note_clear.png"];
+                    newImage.tag = 1;
+                    [self.view addSubview:newImage];
+                    break;
+
+                
+                case -1:   // Flat
+                     // Arrow above the dot
+                    Rect = CGRectMake(pos.x-15, pos.y-30, 30, 30);
+                    newImage = [[UIImageView alloc] initWithFrame:Rect];
+                    newImage.image = [UIImage imageNamed:@"note_clear.png"];
+                    newImage.tag = 1;
+                    [self.view addSubview:newImage];
+                    break;
+                    
+                default:
+                
+                    // In tune - Get rid of images
+                    break;
+            }
+            
+            }
           
-            break;
         }
         
-    }
+    
     
     
     return noteIsInScale;
@@ -279,7 +330,7 @@ CFTimeInterval _arpeggioDelay;
         currentFingerLabel.backgroundColor = [UIColor clearColor];
         
         currentNoteImage = [noteImages objectAtIndex:i];
-        currentNoteImage.image = [UIImage imageNamed:@"note_clear.png"];
+       currentNoteImage.image = [UIImage imageNamed:@"note_clear.png"];
         
         
     }
@@ -329,9 +380,15 @@ CFTimeInterval _arpeggioDelay;
                 note = 29 + position + ((string)*7);
                 instrument.text = @"Viola";
             }
-        else
+        else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
         {
         
+            note = -1 + position + ((string)*5);
+            instrument.text = @"Double Bass";
+        }
+        else
+        {
+            
             note = 17 + position + ((string)*7);
             instrument.text = @"Cello";
         }
@@ -427,9 +484,7 @@ CFTimeInterval _arpeggioDelay;
     
     
     xImage = xStart-xOffset;
-    yImage = yStart-yOffset;
     xLabel = xStart;
-    yLabel = yStart;
     
     CGRect Rect;
     UILabel *newLabel;
@@ -1009,13 +1064,12 @@ CFTimeInterval _arpeggioDelay;
 
     
     double currentFrequency = value;
-    double pitchAbove;
-    double pitchBelow;
+    double pitchAbove=0;
+    double pitchBelow=0;
     BOOL isNoteInScale = false;
     
     // Turn the last lit up finger red
-    isNoteInScale = [self lightFinger:lastNoteIndex forColour:1];
-    isNoteInScale = false;
+    [self lightFinger:lastNoteIndex forColour:1 inPitchAccuracy:0];
     
     
 // Get the volume and only update if over number of decibels
@@ -1063,7 +1117,7 @@ CFTimeInterval _arpeggioDelay;
     Boolean sharp = '\0';
   
     
-    if (pitchAbove - currentFrequency > abs(pitchBelow - currentFrequency)) {
+    if ((pitchAbove - currentFrequency) > abs(pitchBelow - currentFrequency)) {
         nearestPitch = pitchBelow;
         noteIndex = noteBelowIndex;
         sharp = true;
@@ -1092,7 +1146,7 @@ CFTimeInterval _arpeggioDelay;
         accuracyLabel.textColor = [UIColor greenColor];
         pitchIndicatorLabel.image = [UIImage imageNamed:@"note_green.png"];
         // Finger is green if in tune
-        isNoteInScale= [self lightFinger:noteIndex forColour:3];
+        isNoteInScale= [self lightFinger:noteIndex forColour:3 inPitchAccuracy:0];
         }
      else
         {
@@ -1102,7 +1156,7 @@ CFTimeInterval _arpeggioDelay;
             accuracyLabel.textColor = [UIColor redColor];
             pitchIndicatorLabel.image = [UIImage imageNamed:@"note_amber.png"];
                 // Finger is amber
-            isNoteInScale= [self lightFinger:noteIndex forColour:2];
+            isNoteInScale= [self lightFinger:noteIndex forColour:2 inPitchAccuracy:1];
             pitchIndY = 395;
             pitchIndY = pitchIndY - pitchIndL;
 
@@ -1113,7 +1167,7 @@ CFTimeInterval _arpeggioDelay;
             accuracyLabel.textColor = [UIColor redColor];
             pitchIndicatorLabel.image = [UIImage imageNamed:@"note_amber.png"];
                   // Finger is amber
-            isNoteInScale= [self lightFinger:noteIndex forColour:2];
+            isNoteInScale= [self lightFinger:noteIndex forColour:2 inPitchAccuracy:-1];
             pitchIndY = 438;
             
     
@@ -1238,10 +1292,10 @@ CFTimeInterval _arpeggioDelay;
 			[_soundBankPlayer noteOn:[number intValue] gain:1.0f];
             
             // Turn the last lit up finger red
-            [self lightFinger:lastNoteIndex forColour:1];
+            [self lightFinger:lastNoteIndex forColour:1 inPitchAccuracy:0];
             
             // Light up the note playing green
-            [self lightFinger:[number intValue] forColour:3];
+            [self lightFinger:[number intValue] forColour:3 inPitchAccuracy:0];
             lastNoteIndex = [number intValue];
             
 			_arpeggioIndex += 1;

@@ -76,9 +76,7 @@
 
 
 {
-    NSString *returnString;
-    
-    returnString = [[scales objectAtIndex:section]objectForKey:@"scalegroup"];
+
     
     return [[scales objectAtIndex:section]objectForKey:@"scalegroup"];
     

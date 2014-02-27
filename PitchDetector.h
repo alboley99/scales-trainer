@@ -22,6 +22,9 @@
     int samplesInSampleBuffer;
     int bufferLength;
     int windowLength;
+    
+//    SInt16 *samplesToPass;
+    
 }
 
 @property (nonatomic) BOOL running;

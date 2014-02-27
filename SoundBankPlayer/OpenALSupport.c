@@ -81,8 +81,10 @@ void *GetOpenALAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDa
 		ExtAudioFileDispose(extRef);
 		return NULL;
 	}
+    
+    // AJH added (int) to prevent loss of precision warnings
 
-	UInt32 dataSize = theFileLengthInFrames * theOutputFormat.mBytesPerFrame;
+	UInt32 dataSize = (int)theFileLengthInFrames * theOutputFormat.mBytesPerFrame;
 	void *theData = malloc(dataSize);
 	if (theData == NULL)
 	{

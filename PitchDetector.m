@@ -32,13 +32,22 @@
     bufferLength = self.sampleRate/self.lowBoundFrequency;    
     
     
-    hann = (float*) malloc(sizeof(float)*bufferLength);
+ //   hann = (float*) malloc(sizeof(float)*bufferLength);
+    
+// **AJH defined bigger than the buffer length - causes memory problems if not
+    
+    hann = (float*) malloc(sizeof(float)*5000);
+    
     vDSP_hann_window(hann, bufferLength, vDSP_HANN_NORM);
     
     sampleBuffer = (SInt16*) malloc(512);
     samplesInSampleBuffer = 0;
     
-    result = (float*) malloc(sizeof(float)*bufferLength);
+ //   result = (float*) malloc(sizeof(float)*bufferLength);
+    
+    // **AJH defined bigger than the buffer length - causes memory problems if not
+    
+    result = (float*) malloc(sizeof(float)*5000);
     
     return self;
 }
@@ -51,29 +60,31 @@
         newLength += samplesInSampleBuffer;
     }
     
+    // AJH - Creates and allocates newBuffer and then copies sampleBuffer to newBuffer
+    
     SInt16 *newBuffer = (SInt16*) malloc(sizeof(SInt16)*newLength);
     memcpy(newBuffer, sampleBuffer, samplesInSampleBuffer*sizeof(SInt16));
+    
+    // AJH - Now append the latest samples to the buffer starting from the end of the previous samples
+    
     memcpy(&newBuffer[samplesInSampleBuffer], samples, frames*sizeof(SInt16));
     
+    // Free up the memory from the old sample buffer
+    
     free(sampleBuffer);
-//   free(samples);
-    
-    
- //   void free(void *samples);
-    
-//   if (samples!=NULL) {
-    
- //   free(samples); // AJH Added
-        
-// }
-    
         
     sampleBuffer = newBuffer;
     samplesInSampleBuffer = newLength;
     
     if(samplesInSampleBuffer>(self.sampleRate/self.lowBoundFrequency)) {
+        
+//        [self performWithNumFrames:[NSNumber numberWithInt:newLength]];
+        
         if(!self.running) {
+            
+ //           samplesToPass = sampleBuffer;
             [self performSelectorInBackground:@selector(performWithNumFrames:) withObject:[NSNumber numberWithInt:newLength]];
+    //        printf("Correlating");
             self.running = YES;
         }
         samplesInSampleBuffer = 0;
@@ -85,41 +96,44 @@
 
 #pragma mark Perform Auto Correlation
 
--(void) performWithNumFrames: (NSNumber*) numFrames;
-{
-    int n = numFrames.intValue; 
+-(void) performWithNumFrames: (NSNumber*)numFrames   {
+    int n = numFrames.intValue;
     float freq = 0;
+    
+    // ** AJH - May be a problem here - this is running in background - what happens if sampleBuffer is freed up in the meantime?
 
+// ** AJH Now Stored as a class variable - REINSTATED
+    
     SInt16 *samples = sampleBuffer;
-        
+    
+//    SInt16 *samples = samplesToPass;
+    
     int returnIndex = 0;
     float sum;
     bool goingUp = false;
     float normalize = 0;
-
     
-    int k = 0;
     
-    for(int i = 0; i<n; i++) {
+//    NSLog(@"%.2d", n);
+     
+    for(int i = 0; i<n; i++) {    // n is the number frames
         sum = 0;
         for(int j = 0; j<n; j++) {
             
-
-            
-            
             sum += (samples[j]*samples[j+i])*hann[j];
+  //          NSLog(@"%.2hd", samples[i]);
+   //         NSLog(@"%.2f", hann[i]);
             
         }
         if(i ==0 ) normalize = sum;
         result[i] = sum/normalize;
-     
-        k=i;
         
     }
     
     
-    
     for(int i = 0; i<n-8; i++) {
+//        NSLog(@"%.2f", result[i]);
+        
         if(result[i]<0) {
             i+=2; // no peaks below 0, skip forward at a faster rate
         } else {
@@ -148,7 +162,7 @@
             }       
         }
     }
-    
+ // AJH** Getting stuck here - freq = 0
     freq =self.sampleRate/interp(result[returnIndex-1], result[returnIndex], result[returnIndex+1], returnIndex);
     if(freq >= 27.5 && freq <= 4500.0) {
         
@@ -165,7 +179,7 @@ float interp(float y1, float y2, float y3, int k) {
     
     float d, kp;
     d = (y3 - y1) / (2 * (2 * y2 - y1 - y3));
-    //printf("%f = %d + %f\n", k+d, k, d);
+//    printf("%f = %d + %f\n", k+d, k, d);
     kp  =  k + d;
     return kp;
 }

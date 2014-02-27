@@ -73,6 +73,8 @@
     
     UILabel *currentPitchIndicatorLabel;
     
+    
+    
 
 }
 

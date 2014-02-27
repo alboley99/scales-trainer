@@ -79,6 +79,14 @@
 	</dict>
 	<dict>
 		<key>scalegroup</key>
+		<string>Double Bass Scales</string>
+		<key>scales</key>
+		<array>
+			<string>Double Bass - Scale G Major - 2 Octaves</string>
+		</array>
+	</dict>
+	<dict>
+		<key>scalegroup</key>
 		<string>Diminished Sevenths</string>
 		<key>scales</key>
 		<array>

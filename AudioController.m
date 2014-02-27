@@ -103,7 +103,7 @@ void checkStatus(OSStatus status) {
     
     // Disable buffer allocation for the recorder
     flag = 0;
-    status = AudioUnitSetProperty(rioUnit, kAudioUnitProperty_ShouldAllocateBuffer, kAudioUnitScope_Global, kInputBus, &flag, sizeof(flag));
+//    status = AudioUnitSetProperty(rioUnit, kAudioUnitProperty_ShouldAllocateBuffer, kAudioUnitScope_Global, kInputBus, &flag, sizeof(flag));
     
     
     // Initialise
@@ -111,7 +111,7 @@ void checkStatus(OSStatus status) {
     status = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
     checkStatus(status);
     
-    status = 0;
+//    status = 0;
     status = AudioSessionSetActive(YES);
     checkStatus(status);
     
