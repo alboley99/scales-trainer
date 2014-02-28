@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		84574C0D1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */; };
 		847241A718BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */; };
+		84FA82FE18BF824F000B8EFC /* ScaleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA82FD18BF824F000B8EFC /* ScaleSelectViewController.m */; };
+		84FA830018BF8942000B8EFC /* ScalesGroup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84FA82FF18BF8942000B8EFC /* ScalesGroup.plist */; };
 		84FB49B61827997500201563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B51827997500201563 /* Foundation.framework */; };
 		84FB49B81827997500201563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B71827997500201563 /* CoreGraphics.framework */; };
 		84FB49BA1827997500201563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FB49B91827997500201563 /* UIKit.framework */; };
@@ -118,6 +120,9 @@
 /* Begin PBXFileReference section */
 		84574C0C1828FE7700BD2521 /* Dominant 7th Key of E - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dominant 7th Key of E - 2 Octaves.plist"; sourceTree = "<group>"; };
 		847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Viola - Scale C Major - 2 Octaves.plist"; sourceTree = "<group>"; };
+		84FA82FC18BF824F000B8EFC /* ScaleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleSelectViewController.h; sourceTree = "<group>"; };
+		84FA82FD18BF824F000B8EFC /* ScaleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleSelectViewController.m; sourceTree = "<group>"; };
+		84FA82FF18BF8942000B8EFC /* ScalesGroup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ScalesGroup.plist; sourceTree = "<group>"; };
 		84FB49B21827997500201563 /* Scales Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scales Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FB49B51827997500201563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84FB49B71827997500201563 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -257,8 +262,9 @@
 		84574C0B1828557F00BD2521 /* Scales plists */ = {
 			isa = PBXGroup;
 			children = (
-				847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */,
+				84FA82FF18BF8942000B8EFC /* ScalesGroup.plist */,
 				84FB49FD182799CC00201563 /* ScalesList.plist */,
+				847241A618BBBEF40060D874 /* Viola - Scale C Major - 2 Octaves.plist */,
 				84FB49EB182799CC00201563 /* Scale B Major - 2 Octaves.plist */,
 				84FB4A2D182799CD00201563 /* Scale D Minor Harmonic - 3 Octaves.plist */,
 				84FB4A2E182799CD00201563 /* Scale C Minor Harmonic - 3 Octaves.plist */,
@@ -292,6 +298,8 @@
 				84FB49E6182799CC00201563 /* AudioController.m */,
 				84FB49FF182799CD00201563 /* ScaleSelectorViewController.h */,
 				84FB49FE182799CD00201563 /* ScaleSelectorViewController.m */,
+				84FA82FC18BF824F000B8EFC /* ScaleSelectViewController.h */,
+				84FA82FD18BF824F000B8EFC /* ScaleSelectViewController.m */,
 				84FB4A3E182799CD00201563 /* PitchDetector.h */,
 				84FB49E4182799CC00201563 /* PitchDetector.m */,
 				84FB49E5182799CC00201563 /* MainStoryboard.storyboard */,
@@ -581,6 +589,7 @@
 				84FB49C81827997500201563 /* Images.xcassets in Resources */,
 				84FB4A72182799CD00201563 /* P200 Piano C10.caf in Resources */,
 				84FB4A74182799CD00201563 /* P200 Piano D#8.caf in Resources */,
+				84FA830018BF8942000B8EFC /* ScalesGroup.plist in Resources */,
 				84FB4A65182799CD00201563 /* cello_D2_1_forte_arco-normal.mp3 in Resources */,
 				84FB4A89182799CD00201563 /* Scale F Minor Harmonic - 2 Octaves.plist in Resources */,
 				84FB4A62182799CD00201563 /* cello_As3_1_forte_arco-normal.mp3 in Resources */,
@@ -625,6 +634,7 @@
 				84FB4A91182799CD00201563 /* TPCircularBuffer.c in Sources */,
 				84FB4A59182799CD00201563 /* ScaleSelectorViewController.m in Sources */,
 				84FB4A42182799CD00201563 /* PitchDetector.m in Sources */,
+				84FA82FE18BF824F000B8EFC /* ScaleSelectViewController.m in Sources */,
 				84FB4A8F182799CD00201563 /* AppDelegate.m in Sources */,
 				84FB4A5F182799CD00201563 /* OpenALSupport.c in Sources */,
 				84FB4A44182799CD00201563 /* AudioController.m in Sources */,
