@@ -7,19 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScalesTrainerCommon.h"
 
 @interface ScaleSelectViewController : UIViewController
-<UITableViewDataSource , UITableViewDelegate>
+<UITableViewDataSource , UITableViewDelegate, UIAlertViewDelegate>
 
 {
     
-    // NSDictionary *scales;
-    NSArray *scales;
-    NSArray *groups;
+NSMutableArray *scales;
+    
+ScalesTrainerCommon *myScalesTrainerCommon;
+    
+
     
 }
 
+@property (weak, nonatomic) IBOutlet UITableView *groupsTableView;
 @property (strong, nonatomic) NSString *selectedScale;
 
+
+@property (strong, nonatomic) NSString *selectedGroup;
+
+@property (weak, nonatomic) IBOutlet UITableView *groupScaleTableView;
 
 @end

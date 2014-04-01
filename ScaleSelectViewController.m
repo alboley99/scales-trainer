@@ -7,6 +7,9 @@
 //
 
 #import "ScaleSelectViewController.h"
+#import "ScaleViewController.h"
+#import "ScalesTrainerCommon.h"
+
 
 @interface ScaleSelectViewController ()
 
@@ -23,17 +26,24 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
     
-    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"ScalesGroup" ofType:@"plist"];
-    groups = [[NSArray alloc]initWithContentsOfFile:myListPath];
+    myScalesTrainerCommon = [ScalesTrainerCommon sharedManager];
     
-    myListPath = [[NSBundle mainBundle] pathForResource:@"ScalesList" ofType:@"plist"];
-    scales = [[NSArray alloc]initWithContentsOfFile:myListPath];
+   
+    // Get Group Scales from documents area
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+    scales = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
+    
+    // ********
     
     CGRect titleRect = CGRectMake(0, 0, 300, 70);
     UILabel *tableTitle = [[UILabel alloc] initWithFrame:titleRect];
@@ -51,6 +61,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.selectedGroup = @"Alec Current";
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,36 +76,55 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
+    // NB No sections in this table
+    
     if (tableView.tag == 0)
     {
-        return [groups count];
+
+        return 1;
     }
     else
     {
-        NSString *scaleSection = @"Major Scales";
-        return [[scales valueForKey:scaleSection] count];
+
+           return 1;
     }
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    
     
      if (tableView.tag == 0)
      {
-        return [groups count];
+        return [scales count];
      }
      else
      {
-         NSString *scaleSection = @"Major Scales";
-         return [[scales valueForKey:scaleSection] count];
+         
+         for(int i =0 ;i <[scales count];i++)
+         {
+             
+          
+             NSDictionary *group = [scales objectAtIndex:i];
+             NSString *groupName = group[@"GroupName"];
+       
+             
+             if ([groupName  isEqual: self.selectedGroup])
+             {
+                 NSArray *scalesInGroup = group[@"Scales"];
+                 return [scalesInGroup count];
+             }
+            
+     }
+         
      }
     
-    
-    
+    return 0;
 }
+
+    
+    
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 
@@ -101,7 +132,14 @@
 {
 //    return [[groups objectAtIndex:section]objectForKey:@"scalegroup"];
     
-        return @"";
+    if (tableView.tag == 0)
+    {
+        return @"Groups";
+    }
+    else
+    {
+    return @"Scales";
+    }
     
 }
 
@@ -112,67 +150,117 @@
     static NSString *CellIdentifier = @"ScaleCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    int section = indexPath.section;
+//    int section = indexPath.section;
     int row = indexPath.row;
-    
-
-    
     
 
     
     if (tableView.tag == 0)
     {
-        NSString *group = [groups objectAtIndex:row];
-        cell.textLabel.text = group;
+        
+
+            NSDictionary *group = [scales objectAtIndex:row];
+            cell.textLabel.text = group[@"GroupName"];
+                
+                // Default the row - TEMP
+                
+                if ([group[@"GroupName"]  isEqual: @"Alec Current"])
+                {
+                    [tableView
+                     selectRowAtIndexPath:indexPath
+                     animated:TRUE
+                     scrollPosition:UITableViewScrollPositionNone
+                     ];
+                    
+                    [[tableView delegate]
+                     tableView:tableView
+                     didSelectRowAtIndexPath:indexPath
+                     ];
+                }
+
+                
+            
+        
+        
+        
+    
     }
     else
     {
-        NSString *scale = [[[scales objectAtIndex:section]objectForKey:@"scales"]objectAtIndex:row];
-        cell.textLabel.text = scale;
+        
+        
+        for(int i =0 ;i <[scales count];i++)
+        {
+            NSDictionary *group = [scales objectAtIndex:i];
+            NSString *groupName = group[@"GroupName"];
+            
+            
+            if ([groupName isEqualToString:self.selectedGroup])
+            {
+                
+                
+                NSArray *scalesInGroup = group[@"Scales"];
+                NSString *scaleMnemonic1 = [scalesInGroup objectAtIndex:row];
+                cell.textLabel.text = [myScalesTrainerCommon getScaleName:scaleMnemonic1];
+                
+                cell.showsReorderControl = true;
+                
+                break;
+                
+                
+                
+            }
+            
+        }
+        
+
     }
     
     return cell;
     
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+    // Update the PLIST to reorder scales
+    
+    // Create array with scales for the seelcted group
+    
+    for(int i =0 ;i <[scales count];i++)
+    {
+        
+        
+        NSDictionary *group = [scales objectAtIndex:i];
+        NSString *groupName = group[@"GroupName"];
+        
+        
+        if ([groupName isEqualToString:self.selectedGroup])
+        {
+            
+            NSMutableArray *newScales =  [group[@"Scales"] mutableCopy];
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+            
+            [newScales removeObjectAtIndex:sourceIndexPath.row];
+            [newScales insertObject:group atIndex:destinationIndexPath.row];
+            
+            // Update the scales for the group
+            [group setValue:newScales forKey:@"Scales"];
+            
+            // Update the scales PLIST
+            [scales replaceObjectAtIndex:i withObject:group];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+            [scales writeToFile:myListPath atomically:YES];
+         
+            break;
+            
+        }
+        
+    }
+    
+    
+}
 
 
 
@@ -182,15 +270,218 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    int section = indexPath.section;
+//    int section = indexPath.section;
     int row = indexPath.row;
     
-    self.selectedScale  = [groups objectAtIndex:row];
+    if (tableView.tag == 0)
+    {
+        
+        NSDictionary *group = [scales objectAtIndex:row];
+        self.selectedGroup = group[@"GroupName"];
+        
+        
+        // Now reload the scales
+                
+        UITableView *tableViewScales = (UITableView *)[self.view viewWithTag:1];
+        [tableViewScales reloadData];
+        
+    }
+    else
+    {
+        
+        
+    // DO NOTHING
+        
+  //      for(int i =0 ;i <[scales count];i++)
+  //      {
+   //         NSArray *groupScales = [scales objectAtIndex:i];
+            
+            // Group name is in first array element
+            
+  //          NSString *groupName = [groupScales objectAtIndex:0];
+            
+   //
+// if ([groupName isEqualToString:self.selectedGroup])
+    //        {
+                
+   //             NSDictionary *scale = [groupScales objectAtIndex:row+1];
+    //            NSString *scaleMnemonic = scale[@"ScaleMnemonic"];
+               
+                
+  //          }
+            
+  //      }
+        
+        
+        // For now just send back the selected text
+        
+        
+  //      UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+  //      self.selectedScale = selectedCell.textLabel.text;
+        
+    //     [self performSegueWithIdentifier:@"unwindToViewController" sender:self];
+        
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // User has requested a delete
+        
+        for(int i =0 ;i <[scales count];i++)
+        {
+            
+            
+            
+            NSDictionary *group = [scales objectAtIndex:i];
+            NSString *groupName = group[@"GroupName"];
+            
+            
+            if ([groupName isEqualToString:self.selectedGroup])
+            {
+                
+                NSMutableArray *newScales =  [group[@"Scales"] mutableCopy];
+                [newScales removeObjectAtIndex:indexPath.row];
+                
+                // Update the scales for the group
+                [group setValue:newScales forKey:@"Scales"];
+                
+                // Update the scales PLIST
+                [scales replaceObjectAtIndex:i withObject:group];
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString *documentsDirectory = [paths objectAtIndex:0];
+                NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+                [scales writeToFile:myListPath atomically:YES];
+                
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+                
+                break;
+                
+            }
+            
+        }
+        
+    }
+}
+
+
+- (IBAction)editScalesClicked:(id)sender {
+    
+    // Get the Scales UITableView
+    
+    UITableView *scalesTableView = (UITableView *)[self.view viewWithTag:1];
+    [scalesTableView setEditing:true animated:true];
+
+    
+}
+- (IBAction)newGroup:(id)sender {
     
     
-    [self performSegueWithIdentifier:@"unwindToViewController" sender:self];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"New Group" message:@"Please enter the group name:" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+    alertTextField.placeholder = @"Enter the group name";
+    [alert show];
+    
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    NSString *newGroupName = [[alertView textFieldAtIndex:0] text];
+    
+    NSArray *newScales = [NSArray arrayWithObjects:nil];
+    
+    NSDictionary *group = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          newGroupName, @"GroupName", @"NEW", @"GroupAttribute1", newScales, @"Scales",nil];
+    
+    NSMutableArray *newGroups =  [scales mutableCopy];
+    [newGroups insertObject:group atIndex:0];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+    [newGroups writeToFile:myListPath atomically:YES];
+    
+    scales = newGroups;
+    [self.groupsTableView reloadData];
+
+}
+
+- (IBAction)unwindToScaleSelect:(UIStoryboardSegue *)unwindSegue
+{
+    
+    // This is called when one or more new scales have been selected
+    
+    ScaleViewController *scaleVC = unwindSegue.sourceViewController;
+    
+    // Now update the pList with the added scales
+    NSArray *selectedScales = scaleVC.selectedScales;
+    
+    
+    // Find the current selected group
+    
+    for(int i =0 ;i <[scales count];i++)
+    {
+        
+        
+        
+        NSDictionary *group = [scales objectAtIndex:i];
+        NSString *groupName = group[@"GroupName"];
+        
+        
+        
+        if ([groupName isEqualToString:self.selectedGroup])
+        {
+        
+            
+            // Now add the new scales at the top of the list
+            
+            NSMutableArray *newScales =  [group[@"Scales"] mutableCopy];
+
+            for(int j =[selectedScales count]-1 ;j >=0;j--)
+            {
+                
+                NSString *scaleMnemonic = [selectedScales objectAtIndex:j];
+                [newScales insertObject:scaleMnemonic atIndex:0];
+            }
+            
+            
+            // Update the scales for the group
+            [group setValue:newScales forKey:@"Scales"];
+            
+            
+            // Update the scales PLIST
+            [scales replaceObjectAtIndex:i withObject:group];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+            [scales writeToFile:myListPath atomically:YES];
+            
+            // Reload data
+            
+            
+            [self.groupScaleTableView reloadData];
+            
+            break;
+            
+        }
+        
+
+        
+    }
+    
+
+    
     
     
 }
+
 
 @end

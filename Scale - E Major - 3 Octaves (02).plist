@@ -6,15 +6,7 @@
 		<key>string</key>
 		<integer>1</integer>
 		<key>position</key>
-		<integer>0</integer>
-		<key>finger</key>
-		<integer>0</integer>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>1</integer>
-		<key>position</key>
-		<integer>2</integer>
+		<integer>4</integer>
 		<key>finger</key>
 		<integer>1</integer>
 	</dict>
@@ -22,7 +14,7 @@
 		<key>string</key>
 		<integer>1</integer>
 		<key>position</key>
-		<integer>3</integer>
+		<integer>6</integer>
 		<key>finger</key>
 		<integer>2</integer>
 	</dict>
@@ -30,7 +22,7 @@
 		<key>string</key>
 		<integer>1</integer>
 		<key>position</key>
-		<integer>5</integer>
+		<integer>8</integer>
 		<key>finger</key>
 		<integer>4</integer>
 	</dict>
@@ -38,19 +30,9 @@
 		<key>string</key>
 		<integer>2</integer>
 		<key>position</key>
-		<integer>0</integer>
-		<key>finger</key>
-		<integer>0</integer>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>2</integer>
-		<key>position</key>
 		<integer>2</integer>
 		<key>finger</key>
 		<integer>1</integer>
-		<key>direction</key>
-		<string>U</string>
 	</dict>
 	<dict>
 		<key>string</key>
@@ -58,25 +40,15 @@
 		<key>position</key>
 		<integer>4</integer>
 		<key>finger</key>
-		<integer>3</integer>
-		<key>direction</key>
-		<string>U</string>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>2</integer>
 		<key>position</key>
-		<integer>5</integer>
+		<integer>6</integer>
 		<key>finger</key>
 		<integer>4</integer>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>3</integer>
-		<key>position</key>
-		<integer>0</integer>
-		<key>finger</key>
-		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>string</key>
@@ -90,7 +62,7 @@
 		<key>string</key>
 		<integer>3</integer>
 		<key>position</key>
-		<integer>3</integer>
+		<integer>2</integer>
 		<key>finger</key>
 		<integer>2</integer>
 	</dict>
@@ -98,9 +70,17 @@
 		<key>string</key>
 		<integer>3</integer>
 		<key>position</key>
-		<integer>5</integer>
+		<integer>4</integer>
 		<key>finger</key>
 		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>string</key>
+		<integer>3</integer>
+		<key>position</key>
+		<integer>6</integer>
+		<key>finger</key>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>string</key>
@@ -108,9 +88,7 @@
 		<key>position</key>
 		<integer>7</integer>
 		<key>finger</key>
-		<integer>1</integer>
-		<key>direction</key>
-		<string>U</string>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>string</key>
@@ -118,23 +96,13 @@
 		<key>position</key>
 		<integer>9</integer>
 		<key>finger</key>
-		<integer>3</integer>
-		<key>direction</key>
-		<string>U</string>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>3</integer>
-		<key>position</key>
-		<integer>10</integer>
-		<key>finger</key>
 		<integer>4</integer>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>5</integer>
+		<integer>4</integer>
 		<key>finger</key>
 		<integer>1</integer>
 	</dict>
@@ -144,13 +112,21 @@
 		<key>position</key>
 		<integer>6</integer>
 		<key>finger</key>
-		<integer>2</integer>
+		<integer>3</integer>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>8</integer>
+		<integer>7</integer>
+		<key>finger</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>string</key>
+		<integer>4</integer>
+		<key>position</key>
+		<integer>9</integer>
 		<key>finger</key>
 		<integer>1</integer>
 	</dict>
@@ -158,7 +134,7 @@
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>10</integer>
+		<integer>11</integer>
 		<key>finger</key>
 		<integer>2</integer>
 	</dict>
@@ -169,8 +145,6 @@
 		<integer>12</integer>
 		<key>finger</key>
 		<integer>1</integer>
-		<key>direction</key>
-		<string>U</string>
 	</dict>
 	<dict>
 		<key>string</key>
@@ -179,76 +153,30 @@
 		<integer>14</integer>
 		<key>finger</key>
 		<integer>2</integer>
-		<key>direction</key>
-		<string>U</string>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>15</integer>
+		<integer>16</integer>
 		<key>finger</key>
-		<integer>3</integer>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>13</integer>
+		<integer>18</integer>
 		<key>finger</key>
 		<integer>2</integer>
-		<key>direction</key>
-		<string>D</string>
 	</dict>
 	<dict>
 		<key>string</key>
 		<integer>4</integer>
 		<key>position</key>
-		<integer>11</integer>
+		<integer>19</integer>
 		<key>finger</key>
-		<integer>1</integer>
-		<key>direction</key>
-		<string>D</string>
-	</dict>
-	<dict>
-		<key>string</key>
 		<integer>3</integer>
-		<key>position</key>
-		<integer>8</integer>
-		<key>finger</key>
-		<integer>2</integer>
-		<key>direction</key>
-		<string>D</string>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>3</integer>
-		<key>position</key>
-		<integer>6</integer>
-		<key>finger</key>
-		<integer>1</integer>
-		<key>direction</key>
-		<string>D</string>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>2</integer>
-		<key>position</key>
-		<integer>3</integer>
-		<key>finger</key>
-		<integer>2</integer>
-		<key>direction</key>
-		<string>D</string>
-	</dict>
-	<dict>
-		<key>string</key>
-		<integer>2</integer>
-		<key>position</key>
-		<integer>1</integer>
-		<key>finger</key>
-		<integer>1</integer>
-		<key>direction</key>
-		<string>D</string>
 	</dict>
 </array>
 </plist>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>All</string>
+		<key>Sequence</key>
+		<integer>0</integer>
+	</dict>
+    <dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Alec Current</string>
+		<key>Sequence</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Major Scales</string>
+		<key>Sequence</key>
+		<integer>2</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Minor Harmonic Scales</string>
+		<key>Sequence</key>
+		<integer>3</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Minor Melodic Scales</string>
+		<key>Sequence</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Arpeggios</string>
+		<key>Sequence</key>
+		<integer>5</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Dominant Sevenths</string>
+		<key>Sequence</key>
+		<integer>6</integer>
+	</dict>
+	<dict>
+		<key>Instrument</key>
+		<string>Cello</string>
+		<key>Name</key>
+		<string>Diminished Sevenths</string>
+		<key>Sequence</key>
+		<integer>7</integer>
+	</dict>
+</array>
+</plist>

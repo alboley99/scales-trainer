@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MIHBN032</string>
+		<key>ScaleName</key>
+		<string>Scale B Minor Harmonic - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>MIMBN032</string>
+		<key>ScaleName</key>
+		<string>Scale B Minor Melodic - 2 Octaves</string>
+	</dict>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MIHCN023</string>
+		<key>ScaleName</key>
+		<string>C Minor Harmonic - 3 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>MIMCN023</string>
+		<key>ScaleName</key>
+		<string>C Minor Melodic - 3 Octaves</string>
+	</dict>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MIHDN023</string>
+		<key>ScaleName</key>
+		<string>D Minor Harmonic - 3 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>MIMDN023</string>
+		<key>ScaleName</key>
+		<string>D Minor Melodic - 3 Octaves</string>
+	</dict>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MAJEN023</string>
+		<key>ScaleName</key>
+		<string>Scale - E Major - 3 Octaves (02)</string>
+	</dict>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MAJEF023</string>
+		<key>ScaleName</key>
+		<string>Scale - E♭ Major - 3 Octaves (02)</string>
+	</dict>
+    <dict>
+		<key>ScaleMnemonic</key>
+		<string>MAJFN022</string>
+		<key>ScaleName</key>
+		<string>F Major - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>MIHFN022</string>
+		<key>ScaleName</key>
+		<string>F Minor Harmonic - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>MIMFN022</string>
+		<key>ScaleName</key>
+		<string>F Minor Melodic - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>AMAFN022</string>
+		<key>ScaleName</key>
+		<string>Arpeggio F Major - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>DO7GN022</string>
+		<key>ScaleName</key>
+		<string>Dominant 7th Key of G - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>DO7BF032</string>
+		<key>ScaleName</key>
+		<string>Dominant 7th Key of B♭ - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>DO7EN022</string>
+		<key>ScaleName</key>
+		<string>Dominant 7th Key of E - 2 Octaves</string>
+	</dict>
+	<dict>
+		<key>ScaleMnemonic</key>
+		<string>DI7CN022</string>
+		<key>ScaleName</key>
+		<string>Diminished 7th Starting on C - 2 Octaves</string>
+	</dict>
+</array>
+</plist>

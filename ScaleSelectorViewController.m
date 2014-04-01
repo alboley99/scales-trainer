@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"ScalesList" ofType:@"plist"];
+    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"Scale" ofType:@"plist"];
  //   scales = [[NSDictionary alloc]initWithContentsOfFile:myListPath];
     scales = [[NSArray alloc]initWithContentsOfFile:myListPath];
  //   NSLog(@" count = %d",[scales count]);

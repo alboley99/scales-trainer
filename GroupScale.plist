@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>GroupName</key>
+		<string>All</string>
+		<key>GroupAttribute1</key>
+		<string>123</string>
+		<key>Scales</key>
+		<array>
+			<string>MAJFN022</string>
+			<string>MIHFN022</string>
+			<string>MIMFN022</string>
+			<string>MIHDN023</string>
+			<string>MIMDN023</string>
+			<string>MIHCN023</string>
+			<string>MIMCN023</string>
+			<string>MIHBN032</string>
+			<string>MIMBN032</string>
+			<string>AMAFN022</string>
+			<string>DO7GN022</string>
+			<string>DO7BF032</string>
+			<string>DO7EN022</string>
+			<string>DI7CN022</string>
+		</array>
+	</dict>
+	<dict>
+		<key>GroupName</key>
+		<string>Alec Current</string>
+		<key>GroupAttribute1</key>
+		<string>345</string>
+		<key>Scales</key>
+		<array>
+			<string>MIMEF023</string>
+			<string>MAJEF023</string>
+			<string>AMABN032</string>
+			<string>DO7FN022</string>
+		</array>
+	</dict>
+	<dict>
+		<key>GroupName</key>
+		<string>Major Scales</string>
+		<key>GroupAttribute1</key>
+		<string>678</string>
+		<key>Scales</key>
+		<array>
+			<string>MAJFN022</string>
+		</array>
+	</dict>
+</array>
+</plist>

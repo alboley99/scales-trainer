@@ -9,9 +9,10 @@
  */
 
 #import "ViewController.h"
-#import "ScaleSelectorViewController.h"
+#import "ScaleSelectViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SoundBankPlayer.h"
+#import "ScalesTrainerCommon.h"
 
 
 @interface ViewController ()
@@ -78,11 +79,11 @@ CFTimeInterval _arpeggioDelay;
         
         // Calculate the note corresponding to the string and position
         
-        if ([[currentScale.text substringToIndex:5] isEqual:@"Viola"])
+        if ([[currentGroup.text substringToIndex:5] isEqual:@"Viola"])
         {
             note = 29 + position + ((string)*7);
         }
-        else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
+        else if ([[currentGroup.text substringToIndex:11] isEqual:@"Double Bass"])
         {
             
             note = -1 + position + ((string)*5);
@@ -125,11 +126,11 @@ CFTimeInterval _arpeggioDelay;
                 
                 // Calculate the note corresponding to the string and position
                 
-                if ([[currentScale.text substringToIndex:5] isEqual:@"Viola"])
+                if ([[currentGroup.text substringToIndex:5] isEqual:@"Viola"])
                 {
                     note = 29 + position + ((string)*7);
                 }
-                else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
+                else if ([[currentGroup.text substringToIndex:11] isEqual:@"Double Bass"])
                 {
                     
                     note = -1 + position + ((string)*5);
@@ -177,9 +178,24 @@ CFTimeInterval _arpeggioDelay;
     
     // This is called when a new scale has been selected
     
-    ScaleSelectorViewController *scaleSelectionVC = unwindSegue.sourceViewController;
+    NSString *action = unwindSegue.identifier;
+    
+    if ([action  isEqual: @"GroupSelected"])
+    {
+        ScaleSelectViewController *scaleSelectionVC = unwindSegue.sourceViewController;
+        currentGroup.text = scaleSelectionVC.selectedGroup;
+        
+    }
 
-    [self loadScale:scaleSelectionVC.selectedScale];
+    
+    // Need to do something here to retain the selection here
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+    scales = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
+    
+    [scaleSelectorTableView reloadData];
     
     
 }
@@ -336,7 +352,27 @@ CFTimeInterval _arpeggioDelay;
     }
     
     
-// Load scale from Plist
+// THIS NEEDS TO CHANGE TO BUILD THE SCALE FROM THE SCALE ATTRIBUTES
+    
+    // - Work out starting position from tonic and tonic octave
+    // - Work out starting note
+    // - Loop according to number of octaves
+    // MAJOR - 2-2-1-2-2-2-1
+    // MINOR HARMONIC - 2-1-2-2-1-3-1
+    // MINOR MELODIC UP - 2-1-2-2-2-2-1
+    // MINOR MELODIC DOWN - 2-1-2-2-1-3-1
+    // AND SO ON
+    // Calculate note and add to scaleNotes array
+    
+    // Need to define a fingering PLIST which defines the fingering for each scale (and instrument). This is then a look up which is used to determine positionIndex - Scale - Note - String - Position. Each position should be scale RELATIVE note number, string and finger - nothing else required. Position is not required becuase we can work it out. The position index can be workewd out as now by the instrument.
+    
+    
+    // Also need to build the scale name which will be displayed on the screen
+    
+    
+    
+    
+    // Load scale from Plist
     
     NSString *myListPath = [[NSBundle mainBundle] pathForResource:scale ofType:@"plist"];
     
@@ -344,7 +380,7 @@ CFTimeInterval _arpeggioDelay;
     
     scaleData = [[NSArray alloc]initWithContentsOfFile:myListPath];
     
-    currentScale.text = scale;
+ //GRO   currentGroup.text = scale;
     
     // Create fingering from scales array
     
@@ -363,11 +399,18 @@ CFTimeInterval _arpeggioDelay;
     
     for(int i = 0; i<[scaleData count]; i++)
     {
+        
+        direction = [[scaleData objectAtIndex:i]objectForKey:@"direction"];
+        
+        // Skip and and down notes depending on user slection
+        
+        
+        
         finger = [[[scaleData objectAtIndex:i]objectForKey:@"finger"]intValue];
         string = [[[scaleData objectAtIndex:i]objectForKey:@"string"]intValue];
         position = [[[scaleData objectAtIndex:i]objectForKey:@"position"]intValue];
         strFinger = [NSString stringWithFormat:@"%d", finger];
-        direction = [[scaleData objectAtIndex:i]objectForKey:@"direction"];
+        
         
         // Calculate relative position
         
@@ -375,12 +418,12 @@ CFTimeInterval _arpeggioDelay;
         
         // Calculate the note corresponding to the string and position
         
-        if ([[currentScale.text substringToIndex:5] isEqual:@"Viola"])
+        if ([[currentGroup.text substringToIndex:5] isEqual:@"Viola"])
             {
                 note = 29 + position + ((string)*7);
                 instrument.text = @"Viola";
             }
-        else if ([[currentScale.text substringToIndex:11] isEqual:@"Double Bass"])
+        else if ([[currentGroup.text substringToIndex:11] isEqual:@"Double Bass"])
         {
         
             note = -1 + position + ((string)*5);
@@ -393,8 +436,7 @@ CFTimeInterval _arpeggioDelay;
             instrument.text = @"Cello";
         }
         
- //      note = 17 + position + ((string)*7);
-               
+        
         
 
         // Add the number to an Array - this enables the correct position to be lit up
@@ -403,21 +445,27 @@ CFTimeInterval _arpeggioDelay;
         
         // Change label colour if up or down
         
+        if ((scaleUpDownBoth == 0) || (scaleUpDownBoth == 1 && ![direction  isEqual: @"D"]) || (scaleUpDownBoth == 2 && ![direction  isEqual: @"U"]))
+        {
+        
         currentLabel = [fingerLabels objectAtIndex:positionIndex];
         currentLabel.text = strFinger;
         currentNoteImage = [noteImages objectAtIndex:positionIndex];
         currentNoteImage.image = [UIImage imageNamed:@"note_red.png"];
         
-        if ([direction isEqual: @"U"]) {
-            currentLabel.backgroundColor = [UIColor yellowColor];}
-            else {
-                if([direction isEqual: @"D"]){
+        if ([direction isEqual: @"U"])
+            {
+            currentLabel.backgroundColor = [UIColor yellowColor];
+            }
+            else
+            {
+            if([direction isEqual: @"D"]){
                     currentLabel.backgroundColor = [UIColor greenColor];}
-                else {
+            else {
                     currentLabel.backgroundColor = [UIColor clearColor];}
-                }
+            }
         
-        
+        }  // Direction filter
     } //loop
    
     
@@ -452,6 +500,23 @@ CFTimeInterval _arpeggioDelay;
 {
     [super viewDidLoad];
     
+    //TEMP - Hardwire Group
+    
+    currentGroup.text = @"Alec Current";
+    
+    // Initiliase the comon methods singleton
+    
+    myScalesTrainerCommon = [ScalesTrainerCommon sharedManager];
+    
+    // Copy Plists to document area
+    [self copyPlist];
+    
+    // Get Group Scales from documents area
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *myListPath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+    scales = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
     
     _playingArpeggio = NO;
     
@@ -492,6 +557,9 @@ CFTimeInterval _arpeggioDelay;
     
     fingerLabels = [[NSMutableArray alloc] init];
     noteImages = [[NSMutableArray alloc] init];
+    
+    
+    scaleUpDownBoth = 0;
     
     
     for (int i=0; i<4; i++)
@@ -979,7 +1047,9 @@ CFTimeInterval _arpeggioDelay;
     // Load the initial scale
    
     instrument.text = @"Cello";
-    [self loadScale:@"Scale C Major - 3 Octaves"];
+    
+    currentGroup.text = @"Alec Current";
+    [self loadScale:@"Scale - C Major - 3 Octaves (02)"];
     
     // Set up to get Mic Volume
     
@@ -1322,6 +1392,159 @@ CFTimeInterval _arpeggioDelay;
 	}
 }
 
+- (IBAction)selectUpDownBoth:(id)sender {
     
+    
+    scaleUpDownBoth = selectUpDownBoth.selectedSegmentIndex;
+    [self loadScale:(currentGroup.text)];
+}
+
+- (void)copyPlist {
+    
+    // Copies PLIST to Document Directories
+    
+    BOOL success;
+    NSError *error;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"GroupScale.plist"];
+    
+    success = [fileManager fileExistsAtPath:filePath];
+    if (success) return;
+    
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GroupScale.plist"];
+    success = [fileManager copyItemAtPath:path toPath:filePath error:&error];
+    
+    if (!success) {
+        NSAssert1(0, @"Failed to copy Plist. Error %@", [error localizedDescription]);
+    }}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // NB No sections in this table
+    
+    if (tableView.tag == 0)
+    {
+        
+        return 1;
+    }
+    else
+    {
+        
+        return 1;
+    }
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    
+        for(int i =0 ;i <[scales count];i++)
+        {
+            
+            NSDictionary *group = [scales objectAtIndex:i];
+            NSString *groupName = group[@"GroupName"];
+            
+            
+            if ([groupName  isEqual: currentGroup.text])
+            {
+                NSArray *scalesInGroup = group[@"Scales"];
+                return [scalesInGroup count];
+                
+            }
+            
+        }
+        
+    
+    
+    return 0;
+}
+
+
+
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+
+
+{
+    //    return [[groups objectAtIndex:section]objectForKey:@"scalegroup"];
+    
+
+    {
+        return @"Select scale";
+    }
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ScaleCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    //    int section = indexPath.section;
+    int row = indexPath.row;
+    
+        
+        for(int i =0 ;i <[scales count];i++)
+        {
+            
+            
+            NSDictionary *group = [scales objectAtIndex:i];
+            NSString *groupName = group[@"GroupName"];
+            
+            
+            if ([groupName isEqualToString:currentGroup.text])
+            {
+                
+                NSArray *scalesInGroup = group[@"Scales"];
+                NSString *scaleMnemonic = [scalesInGroup objectAtIndex:row];
+                cell.textLabel.text = [myScalesTrainerCommon getScaleName:scaleMnemonic];
+            
+            
+        }
+        
+        
+    }
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+        
+ //       for(int i =0 ;i <[scales count];i++)
+ //       {
+ //           NSDictionary *group = [scales objectAtIndex:i];
+   //         NSString *groupName = group[@"GroupName"];
+            
+  //
+   //         if ([groupName isEqualToString:currentGroup.text])
+   //         {
+                
+     //           NSDictionary *scale = [groupScales objectAtIndex:row+1];
+      //          NSString *scaleMnemonic = scale[@"ScaleMnemonic"];
+                
+                UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+                [self loadScale:selectedCell.textLabel.text];
+                
+   //         }
+            
+  //      }
+    
+        
+    
+    
+}
 
 @end

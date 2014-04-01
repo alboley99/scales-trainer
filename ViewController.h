@@ -13,15 +13,21 @@
 #import "PitchDetector.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
+#import "ScalesTrainerCommon.h"
 
 @class ScaleSelectorViewController;
 
-@interface ViewController : UIViewController <PitchDetectorDelegate, AudioControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ViewController : UIViewController <PitchDetectorDelegate, AudioControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     
-        NSArray *scaleData;
-        NSMutableArray *scaleNotes; // Holds the MIDI note number for each note in the current scale
-        NSString *selectedScale;
+    
+    ScalesTrainerCommon *myScalesTrainerCommon;
+    NSArray *scaleData;
+    NSMutableArray *scaleNotes; // Holds the MIDI note number for each note in the current scale
+    
+    NSString *selectedScale;
+//GRO    NSString *selectedGroup;
+    NSArray *scales;
     
     int numberOfPositions;   // The number of positions to show on one string
     
@@ -33,15 +39,18 @@
     __weak IBOutlet UILabel *accuracyLabel;
     __weak IBOutlet UILabel *variationLabel;
     
-    __weak IBOutlet UIPickerView *scalePicker;
+//GRO    __weak IBOutlet UIPickerView *scalePicker;
     
     __weak IBOutlet UISwitch *stopStartPitchSwitch;
     __weak IBOutlet UILabel *instrument;
     __weak IBOutlet UIImageView *pitchIndicatorLabel;
+    __weak IBOutlet UISegmentedControl *selectUpDownBoth;
     
     NSArray *scaleList;
     NSMutableArray *fingerLabels; // Used to hold the UI labels for fingerings
     NSMutableArray *noteImages; // Used to hold the UI labels for note images
+    
+    __weak IBOutlet UITableView *scaleSelectorTableView;
     
     AVAudioRecorder *recorder;
     float decibels;
@@ -49,7 +58,8 @@
     __weak IBOutlet UIButton *soundButton;
     
     __weak IBOutlet UILabel *decibelsLabel;
-    __weak IBOutlet UILabel *currentScale;
+    
+    __weak IBOutlet UILabel *currentGroup;
     
     // Fingers
     
@@ -72,6 +82,8 @@
     BOOL pitchDetectionStarted;
     
     UILabel *currentPitchIndicatorLabel;
+    
+    int scaleUpDownBoth;
     
     
     
